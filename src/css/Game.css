@@ -1,0 +1,184 @@
+@font-face {
+    font-family: 'Gogles';
+    src: url('../fonts/Gogles.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 3x4 grid */
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem auto;
+    width: 80%;
+    max-width: 500px;
+  }
+  .game-stats {
+    background: linear-gradient(185deg, #ff53a9, #b1f6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #202b35;
+  }
+  
+  .card {
+    width: 80px;
+    height: 100px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Card inner structure */
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Card faces */
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background-color: #fff0f8;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .card-front {
+    transform: rotateY(180deg);
+    font-size: 2.5rem;
+  }
+  
+  .card-back {
+    background-color: #ffd6e0;
+  }
+  .pause-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    padding: 2rem 4rem;
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 10px #000000;
+    z-index: 10;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .pause-dialog p {
+    background: linear-gradient(185deg, #ff53a9, #b1f6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1.5px #202b35;
+  }
+  .pause-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    font-family: 'Gogles', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    background-color: #ffb6d9;
+  }
+  .resume-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    font-family: 'Gogles', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    background-color: #ffb6d9;
+  }
+  .exit-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    font-family: 'Gogles', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    background-color: #9ad5ff;
+  }
+  .reset-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    font-family: 'Gogles', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    background-color: #9ad5ff;
+  }
+  button:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    filter: grayscale(50%);
+    cursor: not-allowed;
+  }  
+  .dialog-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 900; /* below the dialog */
+  }  
+  .win-dialog {
+    background-color: #fff0fb;
+    border: 3px solid #ffa4d4;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Gogles', sans-serif;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+  .win-dialog p {
+    font-size: 2rem;
+    background: linear-gradient(185deg, #ff53a9, #b1f6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1.5px #202b35;
+    backdrop-filter: blur;
+  }
+
+  

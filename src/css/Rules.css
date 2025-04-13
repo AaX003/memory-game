@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'Gogles';
+    src: url('../fonts/Gogles.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .rules-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Gogles', sans-serif;
+    animation: bounceIn 1s ease-in;
+  }
+  .rules-container h1 {
+    font-size: 3rem;
+    color: #fa6aa4;
+    text-shadow: 2px 2px #ffffff;
+    margin-bottom: 2rem;
+  }
+  .rules-card-list {
+    margin: 2rem auto;
+    padding: 20px 20px;
+    background: linear-gradient(185deg, #ffc6e2, #bbf7ff);
+    border-radius: 20px;
+    width: 60%;
+    font-size: 2rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .rules-card-list p {
+    background: linear-gradient(185deg, #ff66b3, #66edff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #202b35;
+  }
+  
+  .rules-card {
+    background-color: transparent;
+    color: #ff8ebb;
+  }
+  .next-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 10px;
+    font-size: 1.4rem;
+    border-radius: 30px;
+    font-family: 'Gogles', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    background-color: #9ad5ff;
+    border: none;
+    text-decoration: none;
+  }
+  .next-btn:hover {
+    background-color: #7bc9ff;
+    transform: scale(1.05);
+  }
+
+  .back-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 10px;
+    font-size: 1.4rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Gogles', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    background-color: #ffb6d9;
+  }
+  .back-btn:hover {
+    background-color: #ffa8c7;
+    transform: scale(1.05);
+  }
