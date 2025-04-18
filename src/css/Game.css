@@ -75,7 +75,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: transparent;
+    background-color: rgb(172, 251, 243);
+    border: 6px dashed rgb(255, 167, 211);
     padding: 2rem 4rem;
     border-radius: 20px;
     text-align: center;
@@ -107,6 +108,10 @@
     color: white;
     background-color: #c1ffb6;
   }
+  .pause-btn:hover {
+    background-color: #9dda92;
+    transform: scale(1.2);
+  }
   .resume-btn {
     display: inline-block;
     padding: 12px 30px;
@@ -120,6 +125,10 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: white;
     background-color: #ffb6d9;
+  }
+  .resume-btn:hover {
+    background-color: #dc8eb4;
+    transform: scale(1.2);
   }
   .exit-btn {
     display: inline-block;
@@ -135,6 +144,10 @@
     color: white;
     background-color: #9ad5ff;
   }
+  .exit-btn:hover {
+    background-color: #7bb5de;
+    transform: scale(1.2);
+  }
   .reset-btn {
     display: inline-block;
     padding: 12px 30px;
@@ -149,6 +162,10 @@
     color: white;
     background-color: #9ad5ff;
     cursor: pointer;
+  }
+  .reset-btn:hover {
+    background-color: #7bb5de;
+    transform: scale(1.2);
   }
   button:disabled {
     opacity: 0.5;
