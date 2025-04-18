@@ -16,6 +16,7 @@ function Game() {
   const [secondCard, setSecondCard] = useState(null);
   const [score, setScore] = useState(0);
   const [time, setTime] = useState(60);
+  const [showPauseDialog, setShowPauseDialog] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [showGameOverDialog, setShowGameOverDialog] = useState(false);
   const [showWinDialog, setShowWinDialog] = useState(false);
@@ -137,6 +138,12 @@ function Game() {
     setCards(shuffled);
   };
 
+  // PAUSE GAME
+  const pauseGame = () => {
+    setIsPaused(true);
+    setShowPauseDialog(true);
+  }
+
   return (
     <div className="game-container">
       <div className="game-stats">
@@ -152,24 +159,13 @@ function Game() {
             className={`card ${card.isFlipped || card.isMatched ? "flipped" : ""}`}
             onClick={() => handleCardClick(card)}
           >
-            <div
-            key={card.id}
-            className={`card ${card.isFlipped || card.isMatched ? "flipped" : ""}`}
-            onClick={() => handleCardClick(card)}
-        >
         <div className="card-inner">
             <div className="card-front">{card.emoji}</div>
             <div className="card-back">❓</div>
         </div>
         </div>
-
-          </div>
         ))}
       </div>
-
-      {(showWinDialog || showGameOverDialog || isPaused) && (
-        <div className="dialog-backdrop"></div>
-        )}
 
       {/* WIN MESSAGE */}
       {showWinDialog && !showGameOverDialog && (
@@ -189,7 +185,7 @@ function Game() {
       )}
 
       {/* PAUSE MENU */}
-    {isPaused && !showGameOverDialog && !showWinDialog && (
+    {isPaused &&  showPauseDialog && !showGameOverDialog && !showWinDialog && (
     <div className="pause-dialog">
         <p className="pause-msg">Game Paused</p>
         <button className="resume-btn" onClick={() => setIsPaused(false)}>
@@ -209,6 +205,17 @@ function Game() {
         >
         Reset
         </button>
+
+        {/* PAUSE BUTTON FOR PAUSE MENU */}
+        <button 
+          className="pause-btn"
+          onClick={pauseGame}
+          style={{
+            visibility: showWinDialog || showGameOverDialog || isPaused ? "hidden" : "visible"
+        }}
+          >
+          Pause
+          </button>
 
         <Link
         to="/"
