@@ -1,67 +1,50 @@
-@font-face {
-    font-family: 'Gogles';
-    src: url('../fonts/Gogles.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-family: 'Gogles', sans-serif;
-    background: linear-gradient(135deg, #ffe3f1, #d9faff);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(to right, #1f2437, #181f62);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: sans-serif;
+}
   
-  .menu-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-family: 'Gogles', sans-serif;
-  }
+.menu-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
   
-  .menu-container h1 {
-    font-size: 3rem;
-    color: #fa6aa4;
-    text-shadow: 2px 2px #ffffff;
-    margin-bottom: 2rem;
-  }
+.menu-container h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
   
-  /* Shared styles for both buttons */
-  .play-btn,
-  .rules-btn {
-    display: inline-block;
-    padding: 12px 30px;
-    margin: 10px;
-    font-size: 1.4rem;
-    border-radius: 30px;
-    text-decoration: none;
-    font-family: 'Gogles', sans-serif;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: white;
-  }
+.play-btn,
+.rules-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  margin: 10px;
+  font-size: 1.4rem;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-weight: 500;
+}
   
-  /* Specific button colors */
-  .play-btn {
-    background-color: #ffb6d9;
-  }
+.play-btn, 
+.rules-btn {
+  background: linear-gradient(to right, #252e54, #181f62);
+}
   
-  .rules-btn {
-    background-color: #9ad5ff;
-  }
+.play-btn:hover,
+.rules-btn:hover {
+  transform: scale(1.05);
+}
   
-  .play-btn:hover {
-    background-color: #ffa8c7;
-    transform: scale(1.05);
-  }
-  
-  .rules-btn:hover {
-    background-color: #7bc9ff;
-    transform: scale(1.05);
-  }
   

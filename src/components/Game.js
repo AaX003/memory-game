@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../css/Game.css";
+
 
 
 const stack = [
@@ -21,6 +23,10 @@ function Game() {
   const [showGameOverDialog, setShowGameOverDialog] = useState(false);
   const [showWinDialog, setShowWinDialog] = useState(false);
   const [matchedCount, setMatchedCount] = useState(0);
+
+  // Prevents card flipping during paused, win or lose states
+  const isBoardLocked =
+  isPaused || showPauseDialog || showGameOverDialog || showWinDialog;
 
   // INITIATE SHUFFLED CARDS
   useEffect(() => {
@@ -100,6 +106,7 @@ function Game() {
 
   const handleCardClick = (card) => {
     if (card.isFlipped || card.isMatched || secondCard) return;
+    if (isBoardLocked || card.isMatched || card.isFlipped) return;
 
     const updatedCard = { ...card, isFlipped: true };
     const updatedCards = cards.map((c) =>
@@ -138,17 +145,29 @@ function Game() {
     setCards(shuffled);
   };
 
+
   // PAUSE GAME
   const pauseGame = () => {
     setIsPaused(true);
     setShowPauseDialog(true);
   }
 
+  const navigate = useNavigate();
+
+  const returnHome = () => {
+    navigate("/");
+  }
+
+  
   return (
     <div className="game-container">
+
+      <h3 className="title">Memory Game</h3>
+      <p className="subtitle">Find all the matching pairs to win</p>
+
       <div className="game-stats">
-        <h1>Score: {score}</h1>
-        <h1>Time: {time}</h1>
+        <h3>Score: {score}</h3>
+        <h3>Time: {time}</h3>
       </div>
 
       {/* GAME BOARD */}
@@ -159,9 +178,9 @@ function Game() {
             className={`card ${card.isFlipped || card.isMatched ? "flipped" : ""}`}
             onClick={() => handleCardClick(card)}
           >
-        <div className="card-inner">
-            <div className="card-front">{card.emoji}</div>
-            <div className="card-back">❓</div>
+          <div className="card-inner">
+          <div className="card-front">{card.emoji}</div>
+          <div className="card-back">?</div>
         </div>
         </div>
         ))}
@@ -188,44 +207,28 @@ function Game() {
     {isPaused &&  showPauseDialog && !showGameOverDialog && !showWinDialog && (
     <div className="pause-dialog">
         <p className="pause-msg">Game Paused</p>
-        <button className="resume-btn" onClick={() => setIsPaused(false)}>
+        <button className="resume-btn" onClick={() => {setIsPaused(false);  setShowPauseDialog(false);}}>
         Resume
         </button>
         <Link to="/" className="exit-btn">Exit</Link>
     </div>
     )}
 
-      {/* RESET + BACK */}
-      <button
-        className="reset-btn"
-        style={{
-            visibility: showWinDialog || showGameOverDialog || isPaused ? "hidden" : "visible"
-        }}
-        onClick={resetGame}
-        >
+     
+      <div className="nav">
+        <button className="reset-btn" onClick={resetGame} disabled={isBoardLocked}>
         Reset
-        </button>
-
-        {/* PAUSE BUTTON FOR PAUSE MENU */}
-        <button 
-          className="pause-btn"
-          onClick={pauseGame}
-          style={{
-            visibility: showWinDialog || showGameOverDialog || isPaused ? "hidden" : "visible"
-        }}
-          >
-          Pause
-          </button>
-
-        <Link
-        to="/"
-        className="back-btn"
-        style={{
-            visibility: showWinDialog || showGameOverDialog || isPaused ? "hidden" : "visible"
-        }}
-        >
-        Back
-        </Link>
+       </button>
+       <button className="pause-btn" onClick={pauseGame} disabled={isBoardLocked}>
+        Pause
+       </button>
+       <button className="back-btn" onClick={returnHome} disabled={isBoardLocked}>
+         Back
+       </button>
+      </div>
+       
+     
+     
     </div>
   );
 }
