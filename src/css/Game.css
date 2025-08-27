@@ -71,6 +71,7 @@
   font-size: 2rem;
   background-color: #1f2437;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  color: white;
 }
   
 .card-front {
@@ -82,7 +83,9 @@
   background-color: #2f375791;
 }
 
-.pause-dialog {
+.pause-dialog,
+.win-dialog,
+.game-over-dialog {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -94,16 +97,20 @@
   backdrop-filter: blur(6px);
   box-shadow: 0 0 10px #000000;
   z-index: 10;
-  font-size: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   animation: bounceIn 0.7s ease forwards;
 }
 
-.pause-dialog p {
+.pause-dialog p,
+.win-dialog p,
+.game-over-dialog p {
   color: white;
+  font-size: 1.02rem;
 }
+
+
 
 .resume-btn,
 .exit-btn,
@@ -143,25 +150,6 @@ button:disabled {
   z-index: 900; /* below the dialog */
 }  
 
-.win-dialog {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: linear-gradient(to right, #1f2437, #181f62);
-  padding: 2rem 4rem;
-  border-radius: 20px;
-  text-align: center;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 10px #000000;
-  z-index: 10;
-  font-size: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: bounceIn 0.7s ease forwards;
-}
-
 @keyframes bounceIn {
   0% {
     transform: translate(-50%, -50%) scale(0.6);
@@ -174,29 +162,4 @@ button:disabled {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
-}
-
-.win-dialog p {
-  font-size: 2rem;
-  background: linear-gradient(to right, #1f2437, #181f62);
-  color: white;
-  backdrop-filter: blur;
-}
-
-.game-over-dialog {
-  background: linear-gradient(to right, #1f2437, #181f62);
-  border-radius: 15px;
-  padding: 2.2rem 2.5rem;
-  text-align: center;
-  font-family: sans-serif;
-  position: fixed;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-}
-
-.game-over-msg {
-  color: white;
 }

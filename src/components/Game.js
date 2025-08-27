@@ -6,7 +6,6 @@ import "../css/Game.css";
 
 
 const stack = [
-    "🦊", "🐶", "🐱", "🦄", "🌸", "☂️",
     "🍇", "🥞", "🧋", "🩰", "🪅", "🎠"
   ];
 
@@ -198,7 +197,7 @@ function Game() {
       {/* GAME OVER MESSAGE */}
       {showGameOverDialog && !showWinDialog && !isPaused && (
         <div className="game-over-dialog">
-            <div className="game-over-msg">Game Over! You scored: {score}</div>
+            <p className="game-over-msg">Game Over! Score: {score}</p>
             <button className="play-again-btn" onClick={resetGame}>Play Again?</button>
         </div>
       )}
